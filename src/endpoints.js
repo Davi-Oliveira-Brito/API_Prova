@@ -1,5 +1,5 @@
 import { query, Router } from 'express'
-import { dobro, somar, medirtemperatura, media, tabuada } from './services.js'
+import { dobro, somar, medirtemperatura, media, tabuada, maiornumero, ingressocinema, frequenciaCaracter } from './services.js'
 const server = Router()
 
 server.get('/dobro/:numero', (req, resp) => {
@@ -63,4 +63,34 @@ server.get('/tabuada/q', (req,resp) => {
     })
 })
 
+server.post('/dia2/maiornumero', (req,resp) =>{
+    try {
+       let numero = req.body.numero;
+       let resul = maiornumero(numero);
+       resp.send({
+           x:resul
+       })
+    } catch (err) {
+        resp.status(404);
+    }
+})
+
+server.get('/dia2/frequencia/:texto/:char', (req, resp) => {
+    let texto = req.params.texto;
+    let char = req.params.char;
+    let result = frequenciaCaracter(texto, char);
+
+    resp.send({
+        x: result
+    })
+})
+
+server.post('/dia2/ingressocinema', (req, resp) => {
+    let ingresso = req.body
+    let result = ingressocinema(ingresso.dia, ingresso.nacionalidade, ingresso.qtdinteiras, ingresso.qtdmeias);
+
+    resp.send({
+        x: result
+    })
+})
 export default server;
