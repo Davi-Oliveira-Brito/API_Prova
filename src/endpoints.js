@@ -1,5 +1,5 @@
 import { query, Router } from 'express'
-import { dobro, somar, medirtemperatura, media, tabuada, maiornumero, ingressocinema, frequenciaCaracter } from './services.js'
+import { dobro, somar, medirtemperatura, media, tabuada, maiornumero, ingressocinema, frequenciaCaracter, corprimaria } from './services.js'
 const server = Router()
 
 server.get('/dobro/:numero', (req, resp) => {
@@ -91,6 +91,15 @@ server.post('/dia2/ingressocinema', (req, resp) => {
 
     resp.send({
         x: result
+    })
+})
+
+server.get('/dia2/corprimaria/:cor', (req, resp) => {
+    let cor = req.params.cor;
+    let result = corprimaria(cor);
+    
+    resp.send({
+        ehPrimaria: result
     })
 })
 export default server;
