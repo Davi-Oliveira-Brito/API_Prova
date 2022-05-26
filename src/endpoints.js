@@ -86,7 +86,7 @@ server.get('/dia2/frequencia/:texto/:char', (req, resp) => {
 })
 
 server.post('/dia2/ingressocinema', (req, resp) => {
-    let ingresso = req.body
+    let ingresso = req.body;
     let result = ingressocinema(ingresso.dia, ingresso.nacionalidade, ingresso.qtdinteiras, ingresso.qtdmeias);
 
     resp.send({
@@ -99,7 +99,7 @@ server.get('/dia2/corprimaria/:cor', (req, resp) => {
     let result = corprimaria(cor);
     
     resp.send({
-        ehPrimaria: result
+        x: result
     })
 })
 export default server;

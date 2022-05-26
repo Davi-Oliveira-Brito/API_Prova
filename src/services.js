@@ -13,7 +13,7 @@ export function media(nota1,nota2,nota3){
 
 export function tabuada(numero){
     let tabuada =[];
-    for(let i = 0; i <+ numero; i++){
+    for(let i = 0; i <= 10; i++){
         tabuada[i] = numero * i;
     }
     return tabuada;
@@ -41,15 +41,16 @@ export function ingressocinema(dia, nacionalidade,qtdinteiras, qtdmeias){
 
     if(nacionalidade == "brasileira") {
         total = (qtdmeias + qtdinteiras) * 5.0;
+        return total;
     }else{
-        if(dia == "quarta-feira") {
+        if(dia == "quarta") {
             total = (qtdmeias + qtdinteiras) * (28.5 / 2);
-        
+            return total;
         }else{
             total = (qtdinteiras * 28.5) + (qtdmeias * 28.5 / 2);
+            return total;
         }
     }
-    return total;
 }
 
 export function maiornumero(numero) {
